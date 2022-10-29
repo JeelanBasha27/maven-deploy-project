@@ -7,8 +7,8 @@ stages{
     }
   }
   stage('Validate'){
-	steps{
-	bat 'mvn validate'
+	steps {
+	sh 'mvn validate'
 	 }
   
    }
