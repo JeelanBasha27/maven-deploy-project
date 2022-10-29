@@ -1,11 +1,5 @@
 pipeline {
-	agent {
-  label {
-    label 'Jenkins-slave'
-    retries 3
-  }
-}
-
+ agent any
 stages{
   stage('Checkout') {
     steps {
