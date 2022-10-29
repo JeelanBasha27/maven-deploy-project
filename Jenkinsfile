@@ -13,7 +13,7 @@ stages{
     }
   }
   stage('Validate'){
-	step{
+	steps{
 	sh 'mvn validate'
 	 }
   
