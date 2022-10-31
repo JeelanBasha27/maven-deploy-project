@@ -3,7 +3,9 @@ pipeline {
 tools {
   maven 'MAVEN_HOME'
 }
-
+tools {
+  git 'Default'
+}
 stages{
   stage('Checkout') {
     steps {
