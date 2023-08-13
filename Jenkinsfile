@@ -1,22 +1,33 @@
 pipeline {
- agent any
-tools {
-  maven 'MAVEN_HOME'
-}
+  agent any
 
-stages{
+stages {
   stage('Checkout') {
     steps {
-     
-	 checkout(scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'github-user', url: 'https://github.com/JeelanBasha27/maven-deploy-project.git']])
+      checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'github-user', url: 'https://github.com/devopsdeepdive/maven-deploy-project.git']]])
     }
   }
   
-   }
-   stage('Compile'){
-	steps {
-	sh 'mvn compile'
-	 }	  
-   }
-  
+  stage('Validate') {
+    steps {
+      sh 'mvn validate'
+    }
   }
+  stage('Compile') {
+    steps {
+      sh 'mvn compile'
+    }
+  }
+  stage('Test-Skip') {
+    steps {
+      sh 'mvn install -Dmaven.test.skip=true'
+    }
+  }
+  stage('Package') {
+    steps {
+      sh 'mvn package'
+    }
+  }
+
+}
+}
