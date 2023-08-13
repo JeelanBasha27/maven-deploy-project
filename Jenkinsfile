@@ -1,5 +1,8 @@
 pipeline {
  agent any
+tools {
+  maven 'MAVEN_HOME'
+}
 
 stages{
   stage('Checkout') {
@@ -10,9 +13,9 @@ stages{
   }
   
    }
-   stage('Validate'){
+   stage('Compile'){
 	steps {
-	sh 'mvn validate'
+	sh 'mvn compile'
 	 }	  
    }
   
