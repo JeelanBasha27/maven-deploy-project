@@ -12,9 +12,9 @@ stages{
   }
   
    }
-   stage('Compile'){
+   stage('Validate'){
 	steps {
-	sh 'mvn compile'
+	sh 'mvn validate'
 	 }	  
    }
   
