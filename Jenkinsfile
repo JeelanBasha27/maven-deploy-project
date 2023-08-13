@@ -1,9 +1,11 @@
 pipeline {
  agent any
+
 stages{
   stage('Checkout') {
     steps {
-     checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'github-user', url: 'https://github.com/JeelanBasha27/maven-deploy-project.git']]])
+     
+	 checkout(scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'github-user', url: 'https://github.com/JeelanBasha27/maven-deploy-project.git']])
     }
   }
   
@@ -13,4 +15,5 @@ stages{
 	sh 'mvn validate'
 	 }	  
    }
+  
   }
