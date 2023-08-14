@@ -20,7 +20,7 @@ stages {
   }
   stage('Test-Skip') {
     steps {
-      sh 'mvn install -Dmaven.test.skip=true'
+      sh 'mvn install -Dmaven.test.skip=false'
     }
   }
   stage('Package') {
