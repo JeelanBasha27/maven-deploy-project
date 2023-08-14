@@ -18,7 +18,7 @@ stages {
       sh 'mvn compile'
     }
   }
-  stage('Test-Skip') {
+  # stage('Test-Skip') {
     steps {
       sh 'mvn install -Dmaven.test.skip=true'
     }
